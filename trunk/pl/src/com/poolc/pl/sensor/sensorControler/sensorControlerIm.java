@@ -10,7 +10,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
 import com.poolc.pl.sensor.dataType.AccelerometerDto;
-import com.poolc.pl.sensorListeners.SensorListener;
+import com.poolc.pl.sensor.sensorListeners.SensorListener;
 
 public class sensorControlerIm extends SensorControler{
 	private int delayRate;

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Vector;
 
 import com.poolc.pl.sensor.sensorControler.sensorControlerIm;
-import com.poolc.pl.sensorListeners.SensorListener;
+import com.poolc.pl.sensor.sensorListeners.SensorListener;
 
 
 import android.app.Activity;

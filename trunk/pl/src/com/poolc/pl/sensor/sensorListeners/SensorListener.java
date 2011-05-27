@@ -1,4 +1,4 @@
-package com.poolc.pl.sensorListeners;
+package com.poolc.pl.sensor.sensorListeners;
 
 import java.util.Calendar;
 import java.util.Date;
