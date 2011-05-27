@@ -9,6 +9,13 @@ public class AccelerometerDto {
 	private float zAxisLinearAcceleration;
 	private String timestamp;
 	
+	
+	public AccelerometerDto(float xAxisGravity, float yAxisGravity, float zAxisGravity, String timestamp) {
+		this.xAxisGravity = xAxisGravity;
+		this.yAxisGravity = yAxisGravity;
+		this.zAxisGravity = zAxisGravity;
+		this.timestamp = timestamp;
+	}
 	public AccelerometerDto(float xAxisGravity, float yAxisGravity, float zAxisGravity, float xAxisLinearAcceleration, float yAxisLinearAcceleration,
 			float zAxisLinearAcceleration, String timestamp){
 		this.xAxisGravity = xAxisGravity;
