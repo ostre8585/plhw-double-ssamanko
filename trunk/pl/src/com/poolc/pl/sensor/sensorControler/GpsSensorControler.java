@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.poolc.pl.sensor.Listener.GpsListener;
 import com.poolc.pl.sensor.dataType.GpsDto;
 
+import android.content.Context;
 import android.hardware.SensorManager;
 import android.location.LocationManager;
 
@@ -15,8 +16,8 @@ public class GpsSensorControler extends SensorControler {
 	private GpsListener gpsListener;
 	private ArrayList<GpsDto> sdArrayList;
 	
-	public GpsSensorControler(LocationManager lm, long delayTime) {
-		super(delayTime);
+	public GpsSensorControler(Context mContext, LocationManager lm, long delayTime) {
+		super(mContext, delayTime);
 		this.lm = lm;
 		
 		// TODO Auto-generated constructor stub

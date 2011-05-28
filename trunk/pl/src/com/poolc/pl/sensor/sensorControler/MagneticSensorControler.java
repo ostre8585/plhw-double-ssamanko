@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.poolc.pl.sensor.Listener.MagneticFieldListener;
 import com.poolc.pl.sensor.dataType.MagneticFieldDto;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
@@ -15,8 +16,8 @@ public class MagneticSensorControler extends SensorControler {
 	private MagneticFieldListener magneticListenerData;
 	private ArrayList<MagneticFieldDto> sdArrayList;
 	
-	public MagneticSensorControler(SensorManager sm, long delayTime) {
-		super(delayTime);
+	public MagneticSensorControler(Context mContext, SensorManager sm, long delayTime) {
+		super(mContext, delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;

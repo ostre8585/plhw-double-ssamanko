@@ -2,7 +2,7 @@ package com.poolc.pl.sensor.Listener;
 
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Calendar;
 
 import com.poolc.pl.sensor.dataType.LightDto;

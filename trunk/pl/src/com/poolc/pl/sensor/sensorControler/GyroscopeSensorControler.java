@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.poolc.pl.sensor.Listener.GyroscopeListener;
 import com.poolc.pl.sensor.dataType.GyroscopeDto;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
@@ -15,8 +16,8 @@ public class GyroscopeSensorControler extends SensorControler {
 	private GyroscopeListener gyroscopeListenerData;
 	private ArrayList<GyroscopeDto> sdArrayList;
 	
-	public GyroscopeSensorControler(SensorManager sm, long delayTime) {
-		super(delayTime);
+	public GyroscopeSensorControler(Context mContext, SensorManager sm, long delayTime) {
+		super(mContext, delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;

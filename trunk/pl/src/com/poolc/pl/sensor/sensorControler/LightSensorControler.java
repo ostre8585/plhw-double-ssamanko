@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.poolc.pl.sensor.Listener.LightListener;
 import com.poolc.pl.sensor.dataType.LightDto;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
@@ -16,8 +17,8 @@ public class LightSensorControler extends SensorControler {
 	private LightListener lightListenerData;
 	private ArrayList<LightDto> sdArrayList;
 	
-	public LightSensorControler(SensorManager sm, long delayTime) {
-		super(delayTime);
+	public LightSensorControler(Context mContext, SensorManager sm, long delayTime) {
+		super(mContext, delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;
