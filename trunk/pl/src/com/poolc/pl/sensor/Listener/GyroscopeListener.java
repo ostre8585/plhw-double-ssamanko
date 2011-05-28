@@ -1,5 +1,7 @@
 package com.poolc.pl.sensor.Listener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.EventListener;
 import java.util.ArrayList;
 
@@ -13,8 +15,9 @@ import com.poolc.pl.sensor.dataType.GyroscopeDto;;
 public class GyroscopeListener implements SensorEventListener {
 
 	private static GyroscopeDto gyroscopeData;
-	
+	private static SimpleDateFormat dateFormat;
 	public GyroscopeListener() {
+		dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		
 	}
 	@Override
@@ -29,7 +32,7 @@ public class GyroscopeListener implements SensorEventListener {
 			return;
 		}
 		
-		String timestamp = "" + event.timestamp;
+		String timestamp = dateFormat.format(Calendar.getInstance().getTime());
 		float[] eventValues = event.values;
 		
 		gyroscopeData = new GyroscopeDto(eventValues[0], eventValues[1], eventValues[2], timestamp);

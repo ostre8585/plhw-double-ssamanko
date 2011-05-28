@@ -11,11 +11,12 @@ import android.hardware.SensorManager;
 public class ProximitySensorControler extends SensorControler {
 
 	private int delayRate;
+	private SensorManager sm;
 	private ProximityListener proximityListenerData;
 	private ArrayList<ProximityDto> sdArrayList;
 	
 	public ProximitySensorControler(SensorManager sm, long delayTime) {
-		super(sm, delayTime);
+		super(delayTime);
 		// TODO Auto-generated constructor stub
 		
 		delayRate = sm.SENSOR_DELAY_UI;

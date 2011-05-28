@@ -1,7 +1,9 @@
 package com.poolc.pl.sensor.Listener;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.poolc.pl.sensor.dataType.LightDto;
 
@@ -11,11 +13,12 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class LightListener implements SensorEventListener {
-
+	
 	private static LightDto lightData;
+	private static SimpleDateFormat dateFormat;
 	
 	public LightListener() {
-		
+		dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");	
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -30,7 +33,7 @@ public class LightListener implements SensorEventListener {
 			return;
 		}
 		
-		String timestamp = "" + event.timestamp;
+		String timestamp = dateFormat.format(Calendar.getInstance().getTime());
 		float[] eventValues = event.values;
 		
 		lightData = new LightDto(eventValues[0], timestamp);

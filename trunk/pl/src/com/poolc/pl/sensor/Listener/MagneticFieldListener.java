@@ -1,6 +1,8 @@
 package com.poolc.pl.sensor.Listener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,8 +16,9 @@ import com.poolc.pl.sensor.dataType.MagneticFieldDto;
 public class MagneticFieldListener implements SensorEventListener {
 
 	private static MagneticFieldDto magneticFieldData;
-	
+	private static SimpleDateFormat dateFormat;
 	public MagneticFieldListener() {
+		dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		
 	}
 	@Override
@@ -31,7 +34,7 @@ public class MagneticFieldListener implements SensorEventListener {
 			return;
 		}
 		
-		String timestamp = "" + event.timestamp;
+		String timestamp = dateFormat.format(Calendar.getInstance().getTime());
 		float[] eventValues = event.values;
 		
 		magneticFieldData = new MagneticFieldDto(eventValues[0], eventValues[1], eventValues[2], timestamp);

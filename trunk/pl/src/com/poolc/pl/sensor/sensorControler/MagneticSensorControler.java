@@ -11,11 +11,12 @@ import android.hardware.SensorManager;
 public class MagneticSensorControler extends SensorControler {
 
 	private int delayRate;
+	private SensorManager sm;
 	private MagneticFieldListener magneticListenerData;
 	private ArrayList<MagneticFieldDto> sdArrayList;
 	
 	public MagneticSensorControler(SensorManager sm, long delayTime) {
-		super(sm, delayTime);
+		super(delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;

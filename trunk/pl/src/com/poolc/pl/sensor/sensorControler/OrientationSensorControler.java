@@ -10,11 +10,12 @@ import android.hardware.SensorManager;
 
 public class OrientationSensorControler extends SensorControler {
 	private int delayRate;
+	private SensorManager sm;
 	private OrientationListener orientationListenerData;
 	private ArrayList<OrientationDto> sdArrayList;
 	
 	public OrientationSensorControler(SensorManager sm, long delayTime) {
-		super(sm, delayTime);
+		super(delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;

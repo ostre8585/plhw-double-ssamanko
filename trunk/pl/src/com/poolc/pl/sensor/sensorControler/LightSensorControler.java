@@ -12,11 +12,12 @@ public class LightSensorControler extends SensorControler {
 
 
 	private int delayRate;
+	private SensorManager sm;
 	private LightListener lightListenerData;
 	private ArrayList<LightDto> sdArrayList;
 	
 	public LightSensorControler(SensorManager sm, long delayTime) {
-		super(sm, delayTime);
+		super(delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;

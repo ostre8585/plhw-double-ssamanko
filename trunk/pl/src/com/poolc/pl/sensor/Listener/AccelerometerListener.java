@@ -1,18 +1,25 @@
 package com.poolc.pl.sensor.Listener;
 
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import com.poolc.pl.sensor.dataType.AccelerometerDto;;
+import com.poolc.pl.sensor.dataType.AccelerometerDto;
+
+import java.util.Date;
 
 public class AccelerometerListener implements SensorEventListener{
 	private static AccelerometerDto accelerometerData;
-
+	private static SimpleDateFormat dateFormat;
+	
 	public AccelerometerListener() {
+		dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		
 	}
 	@Override
@@ -29,8 +36,10 @@ public class AccelerometerListener implements SensorEventListener{
 			return;
 		}
 		
-		String timestamp = "" + event.timestamp;
+		String timestamp = dateFormat.format(Calendar.getInstance().getTime());
 		float[] eventValues = event.values;
+
+		
 		
 //		AccelerometerDto fomerDto = accelerometerArrayList.size() == 0?new AccelerometerDto():accelerometerArrayList.lastElement();
 //		
