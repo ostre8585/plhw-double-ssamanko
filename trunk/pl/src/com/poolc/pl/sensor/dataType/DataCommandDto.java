@@ -48,8 +48,10 @@ public class DataCommandDto implements Parcelable{
 		@Override
 		public DataCommandDto createFromParcel(Parcel paramParcel) {
 			// TODO Auto-generated method stub
-			
-			return null;
+			DataCommandDto dcDto = new DataCommandDto();
+			dcDto.accelerometerUsable = (Boolean) paramParcel.readValue(Boolean.class.getClassLoader());
+			dcDto.confirmSendServer = (Boolean) paramParcel.readValue(Boolean.class.getClassLoader());
+			return dcDto;
 		}
 	};
 	
