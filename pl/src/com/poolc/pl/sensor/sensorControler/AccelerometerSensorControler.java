@@ -13,11 +13,12 @@ import com.poolc.pl.sensor.sensorControler.SensorControler;
 public class AccelerometerSensorControler extends SensorControler {
 
 	private int delayRate;
+	private SensorManager sm;
 	private AccelerometerListener accelerometerListenerData;
 	private ArrayList<AccelerometerDto> sdArrayList;
 	
 	public AccelerometerSensorControler(SensorManager sm, long delayTime) {
-		super(sm, delayTime);
+		super(delayTime);
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;
 		

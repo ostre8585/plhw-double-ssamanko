@@ -1,6 +1,8 @@
 package com.poolc.pl.sensor.Listener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.location.Location;
 import android.location.LocationListener;
@@ -11,14 +13,14 @@ import com.poolc.pl.sensor.dataType.GpsDto;
 public class GpsListener implements LocationListener {
 
 	private static GpsDto gpsData;
-	
+	private static SimpleDateFormat dateFormat;
 	public GpsListener() {
-
+		dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 	}
 	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
-		String timestamp = "";
+		String timestamp = dateFormat.format(Calendar.getInstance().getTime());
 	
 		double latitude = location.getLatitude();
 		double longitude = location.getLongitude();

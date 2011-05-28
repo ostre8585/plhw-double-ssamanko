@@ -11,11 +11,12 @@ import android.hardware.SensorManager;
 public class GyroscopeSensorControler extends SensorControler {
 
 	private int delayRate;
+	private SensorManager sm;
 	private GyroscopeListener gyroscopeListenerData;
 	private ArrayList<GyroscopeDto> sdArrayList;
 	
 	public GyroscopeSensorControler(SensorManager sm, long delayTime) {
-		super(sm, delayTime);
+		super(delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;
