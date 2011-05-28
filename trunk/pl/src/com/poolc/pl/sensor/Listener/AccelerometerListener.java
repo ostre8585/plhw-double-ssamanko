@@ -1,6 +1,6 @@
 package com.poolc.pl.sensor.Listener;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -10,10 +10,10 @@ import android.hardware.SensorManager;
 import com.poolc.pl.sensor.dataType.AccelerometerDto;;
 
 public class AccelerometerListener implements SensorEventListener{
-	private static Vector<AccelerometerDto> accelerometerVector;
+	private static ArrayList<AccelerometerDto> accelerometerArrayList;
 
 	public AccelerometerListener() {
-		accelerometerVector = new Vector<AccelerometerDto> ();
+		accelerometerArrayList = new ArrayList<AccelerometerDto> ();
 	}
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
@@ -32,7 +32,7 @@ public class AccelerometerListener implements SensorEventListener{
 		String timestamp = "" + event.timestamp;
 		float[] eventValues = event.values;
 		
-//		AccelerometerDto fomerDto = accelerometerVector.size() == 0?new AccelerometerDto():accelerometerVector.lastElement();
+//		AccelerometerDto fomerDto = accelerometerArrayList.size() == 0?new AccelerometerDto():accelerometerArrayList.lastElement();
 //		
 //		float[] gravity = new float[3];
 //		float[] linearAcceleration = new float[3]; 
@@ -49,18 +49,18 @@ public class AccelerometerListener implements SensorEventListener{
 //				linearAcceleration[2], timestamp);
 		
 		AccelerometerDto aDto = new AccelerometerDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		accelerometerVector.add(aDto);
+		accelerometerArrayList.add(aDto);
 		
 	}
 	
-	public static Vector<AccelerometerDto> getAccelerometerVector() {
-		Vector<AccelerometerDto> tempVector;
-		synchronized (accelerometerVector) {
-			tempVector = (Vector<AccelerometerDto>) accelerometerVector.clone();
-			accelerometerVector.removeAllElements();
+	public static ArrayList<AccelerometerDto> getAccelerometerArrayList() {
+		ArrayList<AccelerometerDto> tempArrayList;
+		synchronized (accelerometerArrayList) {
+			tempArrayList = (ArrayList<AccelerometerDto>) accelerometerArrayList.clone();
+			accelerometerArrayList.clear();
 			
 		}
-		return tempVector;
+		return tempArrayList;
 	}
 	
 

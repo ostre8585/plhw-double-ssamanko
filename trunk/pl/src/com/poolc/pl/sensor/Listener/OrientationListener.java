@@ -1,6 +1,6 @@
 package com.poolc.pl.sensor.Listener;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import com.poolc.pl.sensor.dataType.OrientationDto;
 
@@ -10,10 +10,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class OrientationListener implements SensorEventListener {
-	private static Vector<OrientationDto> orientationVector;
+	private static ArrayList<OrientationDto> orientationArrayList;
 
 	public OrientationListener() {
-		orientationVector = new Vector<OrientationDto>();
+		orientationArrayList = new ArrayList<OrientationDto>();
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -32,18 +32,18 @@ public class OrientationListener implements SensorEventListener {
 		float[] eventValues = event.values;
 		
 		OrientationDto oDto = new OrientationDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		orientationVector.add(oDto);
+		orientationArrayList.add(oDto);
 		
 		
 	}
 	
-	public Vector<OrientationDto> getOrientationVector() {
-		Vector<OrientationDto> tempVector;
-		synchronized (orientationVector) {
-			tempVector = (Vector<OrientationDto>) orientationVector.clone();
-			orientationVector.removeAllElements();
+	public ArrayList<OrientationDto> getOrientationArrayList() {
+		ArrayList<OrientationDto> tempArrayList;
+		synchronized (orientationArrayList) {
+			tempArrayList = (ArrayList<OrientationDto>) orientationArrayList.clone();
+			orientationArrayList.clear();
 		}
-		return tempVector;
+		return tempArrayList;
 	}
 
 }

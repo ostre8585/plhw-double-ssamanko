@@ -1,6 +1,6 @@
 package com.poolc.pl.sensor.Listener;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -13,10 +13,10 @@ import com.poolc.pl.sensor.dataType.MagneticFieldDto;
 
 public class MagneticFieldListener implements SensorEventListener {
 
-	private static Vector<MagneticFieldDto> magneticFieldVector;
+	private static ArrayList<MagneticFieldDto> magneticFieldArrayList;
 	
 	public MagneticFieldListener() {
-		magneticFieldVector = new Vector<MagneticFieldDto>();
+		magneticFieldArrayList = new ArrayList<MagneticFieldDto>();
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -35,18 +35,18 @@ public class MagneticFieldListener implements SensorEventListener {
 		float[] eventValues = event.values;
 		
 		MagneticFieldDto mDto = new MagneticFieldDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		magneticFieldVector.add(mDto);
+		magneticFieldArrayList.add(mDto);
 		
 	}
 	
-	public static Vector<MagneticFieldDto> getMagneticFieldVector() {
-		Vector<MagneticFieldDto> tempVector;
-		synchronized (magneticFieldVector) {
-			tempVector = (Vector<MagneticFieldDto>) magneticFieldVector.clone();
-			magneticFieldVector.removeAllElements();
+	public static ArrayList<MagneticFieldDto> getMagneticFieldArrayList() {
+		ArrayList<MagneticFieldDto> tempArrayList;
+		synchronized (magneticFieldArrayList) {
+			tempArrayList = (ArrayList<MagneticFieldDto>) magneticFieldArrayList.clone();
+			magneticFieldArrayList.clear();
 			
 		}
-		return tempVector;
+		return tempArrayList;
 	}
 
 }

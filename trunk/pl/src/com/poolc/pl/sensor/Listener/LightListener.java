@@ -1,7 +1,7 @@
 package com.poolc.pl.sensor.Listener;
 
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import com.poolc.pl.sensor.dataType.LightDto;
 
@@ -12,10 +12,10 @@ import android.hardware.SensorManager;
 
 public class LightListener implements SensorEventListener {
 
-	private static Vector<LightDto> lightVector;
+	private static ArrayList<LightDto> lightArrayList;
 	
 	public LightListener() {
-		lightVector = new Vector<LightDto>();
+		lightArrayList = new ArrayList<LightDto>();
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -34,18 +34,18 @@ public class LightListener implements SensorEventListener {
 		float[] eventValues = event.values;
 		
 		LightDto lDto = new LightDto(eventValues[0], timestamp);
-		lightVector.add(lDto);
+		lightArrayList.add(lDto);
 		
 		
 	}
 	
-	public Vector<LightDto> getLightVector() {
-		Vector<LightDto> tempVector;
-		synchronized (lightVector) {
-			tempVector = (Vector<LightDto>) lightVector.clone();
-			lightVector.removeAllElements();
+	public ArrayList<LightDto> getLightArrayList() {
+		ArrayList<LightDto> tempArrayList;
+		synchronized (lightArrayList) {
+			tempArrayList = (ArrayList<LightDto>) lightArrayList.clone();
+			lightArrayList.clear();
 		}
-		return tempVector;
+		return tempArrayList;
 	}
 	
 

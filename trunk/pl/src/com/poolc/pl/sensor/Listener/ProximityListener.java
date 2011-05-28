@@ -1,6 +1,6 @@
 package com.poolc.pl.sensor.Listener;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import com.poolc.pl.sensor.dataType.ProximityDto;
 
@@ -10,10 +10,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class ProximityListener implements SensorEventListener {
-	private static Vector<ProximityDto> proximityVector;
+	private static ArrayList<ProximityDto> proximityArrayList;
 
 	public ProximityListener() {
-		proximityVector = new Vector<ProximityDto>();
+		proximityArrayList = new ArrayList<ProximityDto>();
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -32,17 +32,17 @@ public class ProximityListener implements SensorEventListener {
 		float[] eventValues = event.values;
 		
 		ProximityDto pDto = new ProximityDto(eventValues[0], timestamp);
-		proximityVector.add(pDto);
+		proximityArrayList.add(pDto);
 		
 	}
 	
-	public Vector<ProximityDto> getProximityVector() {
-		Vector<ProximityDto> tempVector;
-		synchronized (proximityVector) {
-			tempVector = (Vector<ProximityDto>) proximityVector.clone();
-			proximityVector.removeAllElements();
+	public ArrayList<ProximityDto> getProximityArrayList() {
+		ArrayList<ProximityDto> tempArrayList;
+		synchronized (proximityArrayList) {
+			tempArrayList = (ArrayList<ProximityDto>) proximityArrayList.clone();
+			proximityArrayList.clear();
 		}
-		return tempVector;
+		return tempArrayList;
 	}
 	
 
