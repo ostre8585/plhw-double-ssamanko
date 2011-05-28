@@ -26,4 +26,7 @@ public class GpsDto {
 		return timestamp;
 	}
 
+	public GpsDto clone() {
+		return new GpsDto(this.latitude, this.longitude, this.timestamp);
+	}
 }

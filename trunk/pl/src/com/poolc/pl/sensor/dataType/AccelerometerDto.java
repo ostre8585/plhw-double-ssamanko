@@ -1,6 +1,6 @@
 package com.poolc.pl.sensor.dataType;
 
-public class AccelerometerDto {
+public class AccelerometerDto implements Cloneable {
 	private float xAxisGravity = (float) 9.81;
 	private float yAxisGravity = (float) 9.81;
 	private float zAxisGravity = (float) 9.81;
@@ -8,7 +8,6 @@ public class AccelerometerDto {
 	private float yAxisLinearAcceleration;
 	private float zAxisLinearAcceleration;
 	private String timestamp;
-	
 	
 	public AccelerometerDto(float xAxisGravity, float yAxisGravity, float zAxisGravity, String timestamp) {
 		this.xAxisGravity = xAxisGravity;
@@ -59,5 +58,8 @@ public class AccelerometerDto {
 		return timestamp;
 	}
 	
+	public AccelerometerDto clone() {
+		return new AccelerometerDto(this.xAxisGravity, this.yAxisGravity, this.zAxisGravity, this.timestamp);	
+	}
 	
 }

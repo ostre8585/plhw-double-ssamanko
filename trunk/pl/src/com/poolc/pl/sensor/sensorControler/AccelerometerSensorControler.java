@@ -38,8 +38,7 @@ public class AccelerometerSensorControler extends SensorControler {
 	public void run() {
 		try {
 			while(!Thread.currentThread().isInterrupted()) {
-				ArrayList<AccelerometerDto> tempArrayList = accelerometerListenerData.getAccelerometerArrayList();
-				sdArrayList.addAll(tempArrayList);
+				sdArrayList.add(accelerometerListenerData.getAccelerometerData());
 				this.sleep(delayTime);
 			}
 		} catch (InterruptedException e) {
@@ -54,5 +53,3 @@ public class AccelerometerSensorControler extends SensorControler {
 	}
 	
 }
-
-

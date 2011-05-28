@@ -10,10 +10,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class OrientationListener implements SensorEventListener {
-	private static ArrayList<OrientationDto> orientationArrayList;
+	private static OrientationDto orientationData;
 
 	public OrientationListener() {
-		orientationArrayList = new ArrayList<OrientationDto>();
+
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -31,19 +31,14 @@ public class OrientationListener implements SensorEventListener {
 		String timestamp = "" + event.timestamp;
 		float[] eventValues = event.values;
 		
-		OrientationDto oDto = new OrientationDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		orientationArrayList.add(oDto);
+		orientationData = new OrientationDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
+		
 		
 		
 	}
 	
-	public ArrayList<OrientationDto> getOrientationArrayList() {
-		ArrayList<OrientationDto> tempArrayList;
-		synchronized (orientationArrayList) {
-			tempArrayList = (ArrayList<OrientationDto>) orientationArrayList.clone();
-			orientationArrayList.clear();
-		}
-		return tempArrayList;
+	public OrientationDto getOrientationData() {
+		return orientationData.clone();
 	}
 
 }

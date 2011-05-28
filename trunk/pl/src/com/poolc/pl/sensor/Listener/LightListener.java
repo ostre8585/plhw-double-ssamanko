@@ -12,10 +12,10 @@ import android.hardware.SensorManager;
 
 public class LightListener implements SensorEventListener {
 
-	private static ArrayList<LightDto> lightArrayList;
+	private static LightDto lightData;
 	
 	public LightListener() {
-		lightArrayList = new ArrayList<LightDto>();
+		
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -33,19 +33,14 @@ public class LightListener implements SensorEventListener {
 		String timestamp = "" + event.timestamp;
 		float[] eventValues = event.values;
 		
-		LightDto lDto = new LightDto(eventValues[0], timestamp);
-		lightArrayList.add(lDto);
+		lightData = new LightDto(eventValues[0], timestamp);
+		
 		
 		
 	}
 	
-	public ArrayList<LightDto> getLightArrayList() {
-		ArrayList<LightDto> tempArrayList;
-		synchronized (lightArrayList) {
-			tempArrayList = (ArrayList<LightDto>) lightArrayList.clone();
-			lightArrayList.clear();
-		}
-		return tempArrayList;
+	public LightDto getLightData() {
+		return lightData.clone();
 	}
 	
 

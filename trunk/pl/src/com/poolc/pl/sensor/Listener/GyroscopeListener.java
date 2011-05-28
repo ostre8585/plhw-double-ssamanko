@@ -12,10 +12,10 @@ import com.poolc.pl.sensor.dataType.GyroscopeDto;;
 
 public class GyroscopeListener implements SensorEventListener {
 
-	private static ArrayList<GyroscopeDto> gyroscopeArrayList;
+	private static GyroscopeDto gyroscopeData;
 	
 	public GyroscopeListener() {
-		gyroscopeArrayList = new ArrayList<GyroscopeDto>();
+		
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -32,19 +32,13 @@ public class GyroscopeListener implements SensorEventListener {
 		String timestamp = "" + event.timestamp;
 		float[] eventValues = event.values;
 		
-		GyroscopeDto gDto = new GyroscopeDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		gyroscopeArrayList.add(gDto);
+		gyroscopeData = new GyroscopeDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
+		
 		
 	}
 	
-	public static ArrayList<GyroscopeDto> getGyroscopeArrayList() {
-		ArrayList<GyroscopeDto> tempArrayList;
-		synchronized (gyroscopeArrayList) {
-			tempArrayList = (ArrayList<GyroscopeDto>) gyroscopeArrayList.clone();
-			gyroscopeArrayList.clear();
-			
-		}
-		return tempArrayList;
+	public static GyroscopeDto getGyroscopeData() {
+		return gyroscopeData.clone();
 	}
 	
 	

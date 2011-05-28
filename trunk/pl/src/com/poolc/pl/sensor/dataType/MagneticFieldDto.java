@@ -33,5 +33,9 @@ public class MagneticFieldDto {
 		return timestamp;
 	}
 	
+	public MagneticFieldDto clone() {
+		return new MagneticFieldDto(this.xAxis, this.yAxis, this.zAxis, this.timestamp);
+	}
+	
 	
 }

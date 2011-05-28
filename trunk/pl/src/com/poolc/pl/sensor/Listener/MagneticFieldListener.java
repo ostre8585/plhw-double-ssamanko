@@ -13,10 +13,10 @@ import com.poolc.pl.sensor.dataType.MagneticFieldDto;
 
 public class MagneticFieldListener implements SensorEventListener {
 
-	private static ArrayList<MagneticFieldDto> magneticFieldArrayList;
+	private static MagneticFieldDto magneticFieldData;
 	
 	public MagneticFieldListener() {
-		magneticFieldArrayList = new ArrayList<MagneticFieldDto>();
+		
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -34,19 +34,13 @@ public class MagneticFieldListener implements SensorEventListener {
 		String timestamp = "" + event.timestamp;
 		float[] eventValues = event.values;
 		
-		MagneticFieldDto mDto = new MagneticFieldDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		magneticFieldArrayList.add(mDto);
+		magneticFieldData = new MagneticFieldDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
+		
 		
 	}
 	
-	public static ArrayList<MagneticFieldDto> getMagneticFieldArrayList() {
-		ArrayList<MagneticFieldDto> tempArrayList;
-		synchronized (magneticFieldArrayList) {
-			tempArrayList = (ArrayList<MagneticFieldDto>) magneticFieldArrayList.clone();
-			magneticFieldArrayList.clear();
-			
-		}
-		return tempArrayList;
+	public static MagneticFieldDto getMagneticFieldData() {
+		return magneticFieldData.clone();
 	}
 
 }

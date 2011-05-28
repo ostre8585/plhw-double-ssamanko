@@ -10,10 +10,10 @@ import android.hardware.SensorManager;
 import com.poolc.pl.sensor.dataType.AccelerometerDto;;
 
 public class AccelerometerListener implements SensorEventListener{
-	private static ArrayList<AccelerometerDto> accelerometerArrayList;
+	private static AccelerometerDto accelerometerData;
 
 	public AccelerometerListener() {
-		accelerometerArrayList = new ArrayList<AccelerometerDto> ();
+		
 	}
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
@@ -48,19 +48,13 @@ public class AccelerometerListener implements SensorEventListener{
 //		AccelerometerDto aDto = new AccelerometerDto(gravity[0], gravity[1], gravity[2], linearAcceleration[0], linearAcceleration[1], 
 //				linearAcceleration[2], timestamp);
 		
-		AccelerometerDto aDto = new AccelerometerDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		accelerometerArrayList.add(aDto);
+		accelerometerData = new AccelerometerDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
 		
 	}
 	
-	public static ArrayList<AccelerometerDto> getAccelerometerArrayList() {
-		ArrayList<AccelerometerDto> tempArrayList;
-		synchronized (accelerometerArrayList) {
-			tempArrayList = (ArrayList<AccelerometerDto>) accelerometerArrayList.clone();
-			accelerometerArrayList.clear();
-			
-		}
-		return tempArrayList;
+	public AccelerometerDto getAccelerometerData() {
+		return accelerometerData.clone();
+		
 	}
 	
 

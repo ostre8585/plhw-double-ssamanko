@@ -33,5 +33,8 @@ public class OrientationDto {
 		return timestamp;
 	}
 	
+	public OrientationDto clone() {
+		return new OrientationDto(this.azimuth, this.pitch, this.roll, this.timestamp);
+	}
 	
 }
