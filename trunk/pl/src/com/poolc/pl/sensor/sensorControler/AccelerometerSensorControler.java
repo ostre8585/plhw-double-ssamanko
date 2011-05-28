@@ -3,6 +3,7 @@ package com.poolc.pl.sensor.sensorControler;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
@@ -17,8 +18,8 @@ public class AccelerometerSensorControler extends SensorControler {
 	private AccelerometerListener accelerometerListenerData;
 	private ArrayList<AccelerometerDto> sdArrayList;
 	
-	public AccelerometerSensorControler(SensorManager sm, long delayTime) {
-		super(delayTime);
+	public AccelerometerSensorControler(Context mContext, SensorManager sm, long delayTime) {
+		super(mContext, delayTime);
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;
 		
