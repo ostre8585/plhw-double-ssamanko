@@ -1,6 +1,6 @@
 package com.poolc.pl.sensor.dataType;
 
-public class AccelerometerDto implements Cloneable {
+public class AccelerometerDto {
 	private float xAxisGravity = (float) 9.81;
 	private float yAxisGravity = (float) 9.81;
 	private float zAxisGravity = (float) 9.81;
