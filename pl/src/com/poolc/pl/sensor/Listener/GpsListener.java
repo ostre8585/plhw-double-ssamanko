@@ -10,10 +10,10 @@ import com.poolc.pl.sensor.dataType.GpsDto;
 
 public class GpsListener implements LocationListener {
 
-	private static ArrayList<GpsDto> gpsArrayList;
+	private static GpsDto gpsData;
 	
 	public GpsListener() {
-		gpsArrayList = new ArrayList<GpsDto>();
+
 	}
 	@Override
 	public void onLocationChanged(Location location) {
@@ -23,18 +23,12 @@ public class GpsListener implements LocationListener {
 		double latitude = location.getLatitude();
 		double longitude = location.getLongitude();
 	
-		GpsDto gDto = new GpsDto(latitude, longitude, timestamp);
-		this.gpsArrayList.add(gDto);
+		gpsData = new GpsDto(latitude, longitude, timestamp);
 			
 	}
 	
-	public static ArrayList<GpsDto> getGpsArrayList() {
-		ArrayList<GpsDto> tempArrayList;
-		synchronized (gpsArrayList) {
-			tempArrayList = (ArrayList<GpsDto>) gpsArrayList.clone();
-			gpsArrayList.clear();
-		}
-		return tempArrayList;
+	public static GpsDto getGpsData() {
+		return gpsData.clone();
 	}
 	
 

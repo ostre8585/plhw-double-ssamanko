@@ -20,4 +20,8 @@ public class LightDto {
 	public String getTimestamp() {
 		return timestamp;
 	}
+	
+	public LightDto clone() {
+		return new LightDto(this.lux, this.timestamp);
+	}
 }

@@ -10,10 +10,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class ProximityListener implements SensorEventListener {
-	private static ArrayList<ProximityDto> proximityArrayList;
+	private static ProximityDto proximityData;
 
 	public ProximityListener() {
-		proximityArrayList = new ArrayList<ProximityDto>();
+		
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -31,18 +31,12 @@ public class ProximityListener implements SensorEventListener {
 		String timestamp = "" + event.timestamp;
 		float[] eventValues = event.values;
 		
-		ProximityDto pDto = new ProximityDto(eventValues[0], timestamp);
-		proximityArrayList.add(pDto);
+		proximityData = new ProximityDto(eventValues[0], timestamp);
 		
 	}
 	
-	public ArrayList<ProximityDto> getProximityArrayList() {
-		ArrayList<ProximityDto> tempArrayList;
-		synchronized (proximityArrayList) {
-			tempArrayList = (ArrayList<ProximityDto>) proximityArrayList.clone();
-			proximityArrayList.clear();
-		}
-		return tempArrayList;
+	public ProximityDto getProximityData() {
+		return proximityData.clone();
 	}
 	
 

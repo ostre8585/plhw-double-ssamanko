@@ -20,4 +20,8 @@ public class ProximityDto {
 	public String getTimestamp() {
 		return timestamp;
 	}
+	
+	public ProximityDto clone() {
+		return new ProximityDto(this.proximity, this.timestamp);
+	}
 }

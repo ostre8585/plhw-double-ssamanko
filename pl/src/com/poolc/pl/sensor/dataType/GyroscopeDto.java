@@ -32,6 +32,10 @@ public class GyroscopeDto {
 	public String getTimestamp() {
 		return timestamp;
 	}
+	
+	public GyroscopeDto clone() {
+		return new GyroscopeDto(this.xAxis, this.yAxis, this.zAxis, this.timestamp);
+	}
 
 	
 }
