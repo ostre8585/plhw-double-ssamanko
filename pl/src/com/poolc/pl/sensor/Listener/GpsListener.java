@@ -1,6 +1,6 @@
 package com.poolc.pl.sensor.Listener;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import android.location.Location;
 import android.location.LocationListener;
@@ -10,10 +10,10 @@ import com.poolc.pl.sensor.dataType.GpsDto;
 
 public class GpsListener implements LocationListener {
 
-	private static Vector<GpsDto> gpsVector;
+	private static ArrayList<GpsDto> gpsArrayList;
 	
 	public GpsListener() {
-		gpsVector = new Vector<GpsDto>();
+		gpsArrayList = new ArrayList<GpsDto>();
 	}
 	@Override
 	public void onLocationChanged(Location location) {
@@ -24,17 +24,17 @@ public class GpsListener implements LocationListener {
 		double longitude = location.getLongitude();
 	
 		GpsDto gDto = new GpsDto(latitude, longitude, timestamp);
-		this.gpsVector.add(gDto);
+		this.gpsArrayList.add(gDto);
 			
 	}
 	
-	public static Vector<GpsDto> getGpsVector() {
-		Vector<GpsDto> tempVector;
-		synchronized (gpsVector) {
-			tempVector = (Vector<GpsDto>) gpsVector.clone();
-			gpsVector.removeAllElements();
+	public static ArrayList<GpsDto> getGpsArrayList() {
+		ArrayList<GpsDto> tempArrayList;
+		synchronized (gpsArrayList) {
+			tempArrayList = (ArrayList<GpsDto>) gpsArrayList.clone();
+			gpsArrayList.clear();
 		}
-		return tempVector;
+		return tempArrayList;
 	}
 	
 

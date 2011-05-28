@@ -1,7 +1,7 @@
 package com.poolc.pl.sensor.Listener;
 
 import java.util.EventListener;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -12,10 +12,10 @@ import com.poolc.pl.sensor.dataType.GyroscopeDto;;
 
 public class GyroscopeListener implements SensorEventListener {
 
-	private static Vector<GyroscopeDto> gyroscopeVector;
+	private static ArrayList<GyroscopeDto> gyroscopeArrayList;
 	
 	public GyroscopeListener() {
-		gyroscopeVector = new Vector<GyroscopeDto>();
+		gyroscopeArrayList = new ArrayList<GyroscopeDto>();
 	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -33,18 +33,18 @@ public class GyroscopeListener implements SensorEventListener {
 		float[] eventValues = event.values;
 		
 		GyroscopeDto gDto = new GyroscopeDto(eventValues[0], eventValues[1], eventValues[2], timestamp);
-		gyroscopeVector.add(gDto);
+		gyroscopeArrayList.add(gDto);
 		
 	}
 	
-	public static Vector<GyroscopeDto> getGyroscopeVector() {
-		Vector<GyroscopeDto> tempVector;
-		synchronized (gyroscopeVector) {
-			tempVector = (Vector<GyroscopeDto>) gyroscopeVector.clone();
-			gyroscopeVector.removeAllElements();
+	public static ArrayList<GyroscopeDto> getGyroscopeArrayList() {
+		ArrayList<GyroscopeDto> tempArrayList;
+		synchronized (gyroscopeArrayList) {
+			tempArrayList = (ArrayList<GyroscopeDto>) gyroscopeArrayList.clone();
+			gyroscopeArrayList.clear();
 			
 		}
-		return tempVector;
+		return tempArrayList;
 	}
 	
 	
