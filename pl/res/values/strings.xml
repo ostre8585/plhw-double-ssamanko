@@ -2,4 +2,9 @@
 <resources>
     <string name="hello">Hello World, framework!</string>
     <string name="app_name">framework</string>
+    <string name="sensor_name">sensor is not selected</string>
+    <string name="sensor_select">센서 선택</string>
+    <string name="sensor_usable">센서사용여부</string>
+    <string name="sensor_result">센서결과값</string>
+    <string name="send_server">서버전송여부</string>
 </resources>
