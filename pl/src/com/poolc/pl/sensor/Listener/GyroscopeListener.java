@@ -2,8 +2,6 @@ package com.poolc.pl.sensor.Listener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.EventListener;
-import java.util.ArrayList;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;

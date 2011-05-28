@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.poolc.pl.sensor.Listener.OrientationListener;
 import com.poolc.pl.sensor.dataType.OrientationDto;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
@@ -14,8 +15,8 @@ public class OrientationSensorControler extends SensorControler {
 	private OrientationListener orientationListenerData;
 	private ArrayList<OrientationDto> sdArrayList;
 	
-	public OrientationSensorControler(SensorManager sm, long delayTime) {
-		super(delayTime);
+	public OrientationSensorControler(Context mContext, SensorManager sm, long delayTime) {
+		super(mContext, delayTime);
 		// TODO Auto-generated constructor stub
 		delayRate = sm.SENSOR_DELAY_UI;
 		this.sm = sm;

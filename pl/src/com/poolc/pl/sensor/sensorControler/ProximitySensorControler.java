@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.poolc.pl.sensor.Listener.ProximityListener;
 import com.poolc.pl.sensor.dataType.ProximityDto;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
@@ -15,8 +16,8 @@ public class ProximitySensorControler extends SensorControler {
 	private ProximityListener proximityListenerData;
 	private ArrayList<ProximityDto> sdArrayList;
 	
-	public ProximitySensorControler(SensorManager sm, long delayTime) {
-		super(delayTime);
+	public ProximitySensorControler(Context mContext, SensorManager sm, long delayTime) {
+		super(mContext, delayTime);
 		// TODO Auto-generated constructor stub
 		
 		delayRate = sm.SENSOR_DELAY_UI;

@@ -20,7 +20,7 @@ public class AccelerometerSensorControler extends SensorControler {
 	
 	public AccelerometerSensorControler(Context mContext, SensorManager sm, long delayTime) {
 		super(mContext, delayTime);
-		delayRate = sm.SENSOR_DELAY_UI;
+		delayRate = SensorManager.SENSOR_DELAY_UI;
 		this.sm = sm;
 		
 		// TODO Auto-generated constructor stub

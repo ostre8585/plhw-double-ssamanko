@@ -2,7 +2,7 @@ package com.poolc.pl.sensor.Listener;
 
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Calendar;
 
 import android.hardware.Sensor;
@@ -11,8 +11,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 import com.poolc.pl.sensor.dataType.AccelerometerDto;
-
-import java.util.Date;
 
 public class AccelerometerListener implements SensorEventListener{
 	private static AccelerometerDto accelerometerData;

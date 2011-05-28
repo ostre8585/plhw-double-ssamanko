@@ -6,6 +6,7 @@ import android.content.Context;
 import android.hardware.SensorManager;
 
 import com.poolc.pl.sensor.dataType.AccelerometerDto;
+import com.poolc.pl.sensor.dataType.*;
 
 public abstract class SensorControler extends Thread implements Runnable{
 	protected long delayTime = 0;
@@ -14,5 +15,6 @@ public abstract class SensorControler extends Thread implements Runnable{
 		this.delayTime = delayTime;
 		this.mContext = mContext;
 	}
+
 	public abstract void startEmbedSensor();
 }
