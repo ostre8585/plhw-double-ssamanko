@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.IBinder;
+import android.widget.Toast;
 
 public class SensorChecker extends Service{
 	private AccelerometerSensorControler accelerometerSensorControler = null;
@@ -20,6 +21,7 @@ public class SensorChecker extends Service{
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
 		intent.getParcelableArrayListExtra("dataCommand");
+		Toast.makeText(this, "111", Toast.LENGTH_SHORT);
 		return super.onStartCommand(intent, flags, startId);
 	}
 	
@@ -29,7 +31,17 @@ public class SensorChecker extends Service{
 	}
 	
 	private void startAccelerometerSensorCrawler(long delayTime){
-		 accelerometerSensorControler = new AccelerometerSensorControler((SensorManager)getSystemService(Context.SENSOR_SERVICE), delayTime*1000);
+		if(accelerometerSensorControler == null){
+			accelerometerSensorControler = new AccelerometerSensorControler(this, (SensorManager)getSystemService(Context.SENSOR_SERVICE), delayTime*1000);
+		}
+		 accelerometerSensorControler.start();
 	}
-
+	
+	private void endAccelerometerSensorCrawler(){
+		if(accelerometerSensorControler == null && !accelerometerSensorControler.isAlive())
+			return;
+		accelerometerSensorControler.interrupt();
+	}
+	
+	
 }
