@@ -1,5 +1,6 @@
 package com.poolc.pl.service;
 
+import com.poolc.pl.sensor.dataType.DataCommandDto;
 import com.poolc.pl.sensor.sensorControler.AccelerometerSensorControler;
 
 import android.app.Service;
@@ -7,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.IBinder;
-import android.widget.Toast;
 
 public class SensorChecker extends Service{
 	private AccelerometerSensorControler accelerometerSensorControler = null;
@@ -20,19 +20,19 @@ public class SensorChecker extends Service{
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
-		intent.getParcelableArrayListExtra("dataCommand");
-//		startAccelerometerSensorCrawler(delayTime)
+		startAccelerometerSensorCrawler(DataCommandDto.accelerometerDelayTime);
 		return super.onStartCommand(intent, flags, startId);
 	}
 	
 	@Override
 	public void onDestroy(){
 		
+		endAccelerometerSensorCrawler();
 	}
 	
-	private void startAccelerometerSensorCrawler(long delayTime){
+	private void startAccelerometerSensorCrawler(double accelerometerDelayTime){
 		if(accelerometerSensorControler == null){
-			accelerometerSensorControler = new AccelerometerSensorControler(this, (SensorManager)getSystemService(Context.SENSOR_SERVICE), delayTime*1000);
+			accelerometerSensorControler = new AccelerometerSensorControler(this, (SensorManager)getSystemService(Context.SENSOR_SERVICE), (long)(accelerometerDelayTime*1000));
 		}
 		 accelerometerSensorControler.start();
 	}
@@ -42,6 +42,4 @@ public class SensorChecker extends Service{
 			return;
 		accelerometerSensorControler.interrupt();
 	}
-	
-	
 }
