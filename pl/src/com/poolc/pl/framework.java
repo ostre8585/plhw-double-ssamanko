@@ -2,6 +2,8 @@ package com.poolc.pl;
 
 import java.util.ArrayList;
 
+import com.poolc.pl.sensor.dataType.DataCommandDto;
+
 
 
 import android.app.TabActivity;
@@ -20,6 +22,7 @@ public class framework extends TabActivity {
 	private SensorManager sm = null;
 	private TabHost mTab;
 	private ArrayList<TabSpec> tabList = new ArrayList<TabSpec>();
+	
 	
     /** Called when the activity is first created. */
     @Override

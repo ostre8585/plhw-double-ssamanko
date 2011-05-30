@@ -21,7 +21,7 @@ public class SensorChecker extends Service{
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
 		intent.getParcelableArrayListExtra("dataCommand");
-		Toast.makeText(this, "111", Toast.LENGTH_SHORT);
+//		startAccelerometerSensorCrawler(delayTime)
 		return super.onStartCommand(intent, flags, startId);
 	}
 	
