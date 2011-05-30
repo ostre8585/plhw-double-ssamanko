@@ -12,9 +12,8 @@ public class MobileClient {
 	private Socket sock;
 	
 	public MobileClient() {
-		try {
-		
-			sock = new Socket("127.0.0.1", 10002);
+		try {		
+			sock = new Socket("127.0.0.1", 2222);
 			br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
 			
