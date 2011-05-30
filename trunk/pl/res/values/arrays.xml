@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array name="sensor_type_select">
+    	<item>Accelerometer</item>
+    	<item>Light</item>
+    </string-array>
+</resources>

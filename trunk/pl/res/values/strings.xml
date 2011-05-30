@@ -7,4 +7,6 @@
     <string name="sensor_usable">센서사용여부</string>
     <string name="sensor_result">센서결과값</string>
     <string name="send_server">서버전송여부</string>
+    <string name="sensor_delay_period">센서확인주기</string>
+    <string name="server_delay_peroid">서버전송주기</string>
 </resources>
