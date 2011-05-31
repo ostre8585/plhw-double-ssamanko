@@ -9,8 +9,8 @@ public class MobileClient extends TimerTask {
 	private static PrintWriter pw;
 	private static Socket sock;
 	
-	private static final String serverAddr = "192.168.0.16";
-	//private static final String serverAddr = "165.132.134.217"; //hellc
+	//private static final String serverAddr = "192.168.0.16";
+	private static final String serverAddr = "165.132.134.217"; //hellc
 	
 	public MobileClient() {
 		try {		
@@ -27,18 +27,31 @@ public class MobileClient extends TimerTask {
 		}
 	}
 	
-	
 	@Override
 	public void run() {
 		
-		String str = null;
-		
-		//send data
-		while(str != null) {
-			pw.println(str);
-			pw.flush();
+		if(sock.isConnected() == false) {
+			try {
+				sock = new Socket(serverAddr, 2222);
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		//remove data
+		
+		pw.println("okokok");
+		pw.flush();
+//		String str = null;
+//		
+//		//send data
+//		while(str != null) {
+//			pw.println(str);
+//			pw.flush();
+//		}
+//		//remove data
 	}
 	
 }

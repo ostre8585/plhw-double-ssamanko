@@ -24,7 +24,7 @@ public class DataCommandDto{
 	public static double orientationDelayTime = 0;
 	public static double proximityDelayTime = 0;
 	
-	public static double confirmSendServerPeriod = 0;
+	public static double confirmSendServerPeriod = 1;
 	
 //	private static DataCommandDto dcDto= null;
 	
