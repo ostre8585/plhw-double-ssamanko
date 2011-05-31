@@ -54,13 +54,33 @@ public class ManageSensor extends Activity {
 		if(sensorType == -1)
 			return;
 		tvSensorName.setText(sensor[sensorType]);
+		
 		if(sensorType == SensorType.ACCELEROMETERSENSOR){
 			chkSenserUsable.setChecked(DataCommandDto.accelerometerUsable);
 			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.accelerometerDelayTime).toString());
-		}else if(sensorType == SensorType.LIGHTSENSOR){
+		} else if (sensorType == SensorType.BATTERY) {
+			chkSenserUsable.setChecked(DataCommandDto.batteryUsable);
+			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.batteryDelayTime).toString());
+		} else if (sensorType == SensorType.GPSSENSOR) {
+			chkSenserUsable.setChecked(DataCommandDto.gpsUsable);
+			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.gpsDelayTime).toString());
+		} else if (sensorType == SensorType.GYROSCOPESENSOR) {
+			chkSenserUsable.setChecked(DataCommandDto.gyroscopeUsable);
+			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.gyroscopeDelayTime).toString());
+		} else if (sensorType == SensorType.LIGHTSENSOR) {
 			chkSenserUsable.setChecked(DataCommandDto.lightUsable);
 			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.lightDelayTime).toString());
+		} else if (sensorType == SensorType.MAGNETICFIELDSENSOR) {
+			chkSenserUsable.setChecked(DataCommandDto.magneticFieldUsable);
+			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.magneticFieldDelayTime).toString());
+		} else if (sensorType == SensorType.ORIENTATIONSENSOR) {
+			chkSenserUsable.setChecked(DataCommandDto.orientationUsable);
+			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.orientationDelayTime).toString());
+		} else if (sensorType == SensorType.PROXIMITYSENSOR) {
+			chkSenserUsable.setChecked(DataCommandDto.proximityUsable);
+			etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.proximityDelayTime).toString());
 		}
+		
 	}
 
 	private OnClickListener btnClickListener = new View.OnClickListener() {
@@ -87,12 +107,30 @@ public class ManageSensor extends Activity {
 			tvSensorName.setText(sensor[paramInt]);
 			sensorType = paramInt;
 			Toast.makeText(ManageSensor.this, new StringBuffer().append(sensorType).toString(), Toast.LENGTH_SHORT).show();
-			if (sensorType == SensorType.ACCELEROMETERSENSOR) {
+			if(sensorType == SensorType.ACCELEROMETERSENSOR){
 				chkSenserUsable.setChecked(DataCommandDto.accelerometerUsable);
 				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.accelerometerDelayTime).toString());
+			} else if (sensorType == SensorType.BATTERY) {
+				chkSenserUsable.setChecked(DataCommandDto.batteryUsable);
+				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.batteryDelayTime).toString());
+			} else if (sensorType == SensorType.GPSSENSOR) {
+				chkSenserUsable.setChecked(DataCommandDto.gpsUsable);
+				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.gpsDelayTime).toString());
+			} else if (sensorType == SensorType.GYROSCOPESENSOR) {
+				chkSenserUsable.setChecked(DataCommandDto.gyroscopeUsable);
+				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.gyroscopeDelayTime).toString());
 			} else if (sensorType == SensorType.LIGHTSENSOR) {
 				chkSenserUsable.setChecked(DataCommandDto.lightUsable);
 				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.lightDelayTime).toString());
+			} else if (sensorType == SensorType.MAGNETICFIELDSENSOR) {
+				chkSenserUsable.setChecked(DataCommandDto.magneticFieldUsable);
+				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.magneticFieldDelayTime).toString());
+			} else if (sensorType == SensorType.ORIENTATIONSENSOR) {
+				chkSenserUsable.setChecked(DataCommandDto.orientationUsable);
+				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.orientationDelayTime).toString());
+			} else if (sensorType == SensorType.PROXIMITYSENSOR) {
+				chkSenserUsable.setChecked(DataCommandDto.proximityUsable);
+				etSensorDelayPeriod.setText(new StringBuffer().append(DataCommandDto.proximityDelayTime).toString());
 			}
 		}
 	};
@@ -105,9 +143,22 @@ public class ManageSensor extends Activity {
 			// TODO Auto-generated method stub
 			if (sensorType == SensorType.ACCELEROMETERSENSOR) {
 				DataCommandDto.accelerometerUsable = chkSenserUsable.isChecked();
+			} else if(sensorType == SensorType.BATTERY) {
+				DataCommandDto.batteryUsable = chkSenserUsable.isChecked();
+			} else if (sensorType == SensorType.GPSSENSOR) {
+				DataCommandDto.gpsUsable = chkSenserUsable.isChecked();
+			} else if (sensorType == SensorType.GYROSCOPESENSOR) {
+				DataCommandDto.gyroscopeUsable = chkSenserUsable.isChecked();
 			} else if (sensorType == SensorType.LIGHTSENSOR) {
 				DataCommandDto.lightUsable = chkSenserUsable.isChecked();
+			} else if (sensorType == SensorType.MAGNETICFIELDSENSOR) {
+				DataCommandDto.magneticFieldUsable = chkSenserUsable.isChecked();
+			} else if (sensorType == SensorType.ORIENTATIONSENSOR) {
+				DataCommandDto.orientationUsable = chkSenserUsable.isChecked();
+			} else if (sensorType == SensorType.PROXIMITYSENSOR) {
+				DataCommandDto.proximityUsable = chkSenserUsable.isChecked();
 			}
+			
 		}
 	};
 	
@@ -119,8 +170,20 @@ public class ManageSensor extends Activity {
 			try{
 				if(sensorType == SensorType.ACCELEROMETERSENSOR){
 					DataCommandDto.accelerometerDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
-				}else if(sensorType == SensorType.LIGHTSENSOR){
+				} else if (sensorType == SensorType.BATTERY){
+					DataCommandDto.batteryDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
+				} else if (sensorType == SensorType.GPSSENSOR){
+					DataCommandDto.gpsDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
+				} else if (sensorType == SensorType.GYROSCOPESENSOR){
+					DataCommandDto.gyroscopeDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
+				} else if (sensorType == SensorType.LIGHTSENSOR){
 					DataCommandDto.lightDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
+				} else if (sensorType == SensorType.MAGNETICFIELDSENSOR){
+					DataCommandDto.magneticFieldDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
+				} else if (sensorType == SensorType.ORIENTATIONSENSOR){
+					DataCommandDto.orientationDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
+				} else if (sensorType == SensorType.PROXIMITYSENSOR){
+					DataCommandDto.proximityDelayTime = Double.parseDouble(etSensorDelayPeriod.getText().toString());
 				}
 				
 			}catch(NumberFormatException ex){
