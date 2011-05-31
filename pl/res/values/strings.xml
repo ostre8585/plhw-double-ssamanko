@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, framework!</string>
     <string name="app_name">framework</string>
     <string name="sensor_name">sensor is not selected</string>
     <string name="sensor_select">센서 선택</string>

@@ -2,6 +2,13 @@
 <resources>
     <string-array name="sensor_type_select">
     	<item>Accelerometer</item>
+    	<item>Battery</item>
+    	<item>GPS</item>
+    	<item>Gyroscope</item>
     	<item>Light</item>
+    	<item>MagneticField</item>
+    	<item>Orientation</item>
+    	<item>Proximity</item>
+    	
     </string-array>
 </resources>

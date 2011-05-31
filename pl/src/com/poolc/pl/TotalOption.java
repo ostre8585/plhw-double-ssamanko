@@ -1,6 +1,9 @@
 package com.poolc.pl;
 
 
+import java.util.Timer;
+
+import com.poolc.pl.network.MobileClient;
 import com.poolc.pl.sensor.dataType.DataCommandDto;
 
 import android.app.Activity;
@@ -20,6 +23,8 @@ import android.widget.Toast;
 public class TotalOption extends Activity{
 	CheckBox chkbServerSendable = null;
 	EditText etServerSendable = null;
+	MobileClient mobileClientJob = null;
+	Timer networkJobScheduler = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -29,6 +34,13 @@ public class TotalOption extends Activity{
 		this.chkbServerSendable.setOnCheckedChangeListener(CheckBoxValueChangeListener);
 		this.etServerSendable = (EditText)findViewById(R.id.et_server_delay_period);
 		this.etServerSendable.setOnKeyListener(txtKeyListener);
+		networkJobScheduler = new Timer();
+		
+		if (DataCommandDto.confirmSendServer == true) {
+			mobileClientJob = new MobileClient();
+			
+			networkJobScheduler.scheduleAtFixedRate(mobileClientJob, 0, (long) (DataCommandDto.confirmSendServerPeriod * 1000));
+		}
 	}
 	
 	@Override
@@ -45,6 +57,16 @@ public class TotalOption extends Activity{
 				boolean paramBoolean) {
 			// TODO Auto-generated method stub
 			DataCommandDto.confirmSendServer = chkbServerSendable.isChecked();
+			
+			if (DataCommandDto.confirmSendServer == true) {
+				mobileClientJob = new MobileClient();
+				
+				networkJobScheduler.scheduleAtFixedRate(mobileClientJob, 0, (long) (DataCommandDto.confirmSendServerPeriod * 1000));
+			} else {
+				mobileClientJob.cancel();
+				
+			}
+			
 		}
 	};
 	
@@ -55,6 +77,11 @@ public class TotalOption extends Activity{
 			// TODO Auto-generated method stub
 			try{
 				DataCommandDto.confirmSendServerPeriod = Double.parseDouble(etServerSendable.getText().toString());
+				if (DataCommandDto.confirmSendServer == true) {
+					mobileClientJob.cancel();
+					mobileClientJob = new MobileClient();
+					networkJobScheduler.scheduleAtFixedRate(mobileClientJob, 0, (long) (DataCommandDto.confirmSendServerPeriod * 1000));
+				}
 			}catch(NumberFormatException ex){
 				etServerSendable.setText("");
 				Toast.makeText(TotalOption.this, "숫자와 .만 입력가능합니다.", Toast.LENGTH_SHORT).show();
