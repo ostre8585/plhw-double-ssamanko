@@ -3,18 +3,19 @@ package com.poolc.pl.network;
 
 import java.io.*;
 import java.net.*;
+import java.util.TimerTask;
 
-public class MobileClient {
-	private final static MobileClient instance = new MobileClient();
-	private BufferedReader br;
-	private PrintWriter pw;
+public class MobileClient extends TimerTask {
+	private static PrintWriter pw;
+	private static Socket sock;
 	
-	private Socket sock;
+	private static final String serverAddr = "192.168.0.16";
+	//private static final String serverAddr = "165.132.134.217"; //hellc
 	
 	public MobileClient() {
 		try {		
-			sock = new Socket("127.0.0.1", 2222);
-			br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			sock = new Socket(serverAddr, 2222);
+
 			pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
 			
 		} catch (UnknownHostException e) {
@@ -26,26 +27,18 @@ public class MobileClient {
 		}
 	}
 	
-	public static MobileClient getInstance() {
-		return instance;
-	}
 	
+	@Override
 	public void run() {
-		//do something
 		
+		String str = null;
 		
-		
-		
-		
-		//when sock close 
-//		try {
-//			br.close();
-//			pw.close();
-//			sock.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		//send data
+		while(str != null) {
+			pw.println(str);
+			pw.flush();
+		}
+		//remove data
 	}
 	
 }
