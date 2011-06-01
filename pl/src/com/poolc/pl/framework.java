@@ -1,7 +1,9 @@
 package com.poolc.pl;
 
+import java.net.Socket;
 import java.util.ArrayList;
 
+import com.poolc.pl.network.MobileClient;
 import com.poolc.pl.sensor.dataType.DataCommandDto;
 
 
@@ -23,7 +25,6 @@ public class framework extends TabActivity {
 	private TabHost mTab;
 	private ArrayList<TabSpec> tabList = new ArrayList<TabSpec>();
 	
-	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,9 @@ public class framework extends TabActivity {
         
         mTab = getTabHost();
         
-        mTab.addTab(mTab.newTabSpec("tag").setIndicator("Senser").setContent(new Intent(this,ManageSensor.class)));
+        mTab.addTab(mTab.newTabSpec("tag").setIndicator("Senser").setContent(new Intent(this, ManageSensor.class)));
         mTab.addTab(mTab.newTabSpec("tag").setIndicator("Option").setContent(new Intent(this, TotalOption.class)));
+
         
     }
     
