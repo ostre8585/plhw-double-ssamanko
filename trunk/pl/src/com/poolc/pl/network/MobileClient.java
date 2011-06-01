@@ -13,18 +13,6 @@ public class MobileClient extends TimerTask {
 	private static final String serverAddr = "165.132.134.217"; //hellc
 	
 	public MobileClient() {
-		try {		
-			sock = new Socket(serverAddr, 2222);
-
-			pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
-			
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	@Override
@@ -33,6 +21,13 @@ public class MobileClient extends TimerTask {
 		if(sock.isConnected() == false) {
 			try {
 				sock = new Socket(serverAddr, 2222);
+				try {
+					pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

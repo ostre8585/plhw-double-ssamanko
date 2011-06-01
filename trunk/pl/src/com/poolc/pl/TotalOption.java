@@ -77,11 +77,6 @@ public class TotalOption extends Activity{
 			// TODO Auto-generated method stub
 			try{
 				DataCommandDto.confirmSendServerPeriod = Double.parseDouble(etServerSendable.getText().toString());
-				if (DataCommandDto.confirmSendServer == true) {
-					mobileClientJob.cancel();
-					mobileClientJob = new MobileClient();
-					networkJobScheduler.scheduleAtFixedRate(mobileClientJob, 0, (long) (DataCommandDto.confirmSendServerPeriod * 1000));
-				}
 			}catch(NumberFormatException ex){
 				etServerSendable.setText("");
 				Toast.makeText(TotalOption.this, "숫자와 .만 입력가능합니다.", Toast.LENGTH_SHORT).show();

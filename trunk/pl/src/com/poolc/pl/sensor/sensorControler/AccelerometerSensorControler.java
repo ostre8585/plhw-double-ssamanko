@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.util.Log;
 
 import com.poolc.pl.sensor.Listener.AccelerometerListener;
 import com.poolc.pl.sensor.dataType.AccelerometerDto;
@@ -41,6 +42,7 @@ public class AccelerometerSensorControler extends SensorControler {
 		try {
 			while(!Thread.currentThread().isInterrupted()) {
 				sdArrayList.add(accelerometerListenerData.getAccelerometerData());
+				Log.d("acc","fds");
 				this.sleep(delayTime);
 			}
 		} catch (InterruptedException e) {
